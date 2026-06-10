@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RonnieCai's Personal Webpage</title>
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+    
+            /* New background image properties */
+            background-image: url('https://i.ibb.co/20Q7HrMH/playstation-background-image-yu-2048x1152.jpg');
+            background-size: cover;        /* Scales the image to cover the entire screen */
+            background-position: center;   /* Centers the image */
+            background-repeat: no-repeat;  /* Prevents the image from tiling */
+            background-attachment: fixed;  /* Keeps the background fixed while scrolling */
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header / Profile Section */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover; /* Ensures the image crops perfectly into a circle without distortion */
+            margin: 0 auto 1.5rem;
+            display: block; /* Changes from flex to block for proper image alignment */
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+            color: #ffffff; 
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ffffff; /* Forces the name text to be pure white */
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Card Component */
+        .card {
+            /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.12); 
+    
+            /* The blur effect that creates the "frosted glass" look */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); /* Safari support */
+    
+            /* Semi-transparent white borders for a glass edge reflection */
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+    
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+    
+            /* Subtle, dark shadow to make the glass pop from the background */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            color: #ffffff;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffffff; /* Ensures heading text is visible on glass */
+        }
+
+        /* Grid Setup for Projects/Links */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .grid-item {
+            padding: 1.25rem;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.08); /* Dark glass tint */
+            text-decoration: none;
+            color: #ffffff; /* White text for readability */
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border edge */
+        }
+
+        .grid-item:hover {
+            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.18); /* Brightens slightly on hover */
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        .grid-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: #60a5fa; /* Neon PlayStation blue accent */
+        } 
+
+        .grid-item p {
+            font-size: 0.9rem;
+            color: #ffffff; /* Soft gray for description text */
+        }
+
+        /* Contact Button */
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Links Subcard Styling */
+        .link-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+        }
+
+        .link-icon {
+            color: #60a5fa;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .link-subcard:hover .link-icon {
+            transform: translate(2px, -2px); /* Moves arrow up and right on hover */
+            color: #ffffff;
+        }
+
+        /* Mobile Optimization Override */
+        @media (max-width: 600px) {
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                background-image: url('https://i.ibb.co/20Q7HrMH/playstation-background-image-yu-2048x1152.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                filter: brightness(1.8); 
+                -webkit-filter: brightness(1.8);
+            }
+
+            body {
+                background-image: none;
+                padding: 1rem 0.5rem;
+            }
+
+            /* FIXES PERSONAL IMAGE DISTORTION & DARKNESS ON MOBILE */
+            .profile-img {
+                width: 110px;          /* Explicitly downscales width for mobile viewports */
+                height: 110px;         /* Forces a strict 1:1 aspect ratio to ensure a perfect circle */
+                object-fit: cover;     /* Prevents stretching or squishing */
+                display: block;
+                margin: 0 auto 1rem;
+                filter: brightness(1.8); /* Slightly lifts the exposure of your photo on mobile screens */
+                -webkit-filter: brightness(1.8);
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 0.5rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+                margin-bottom: 1.25rem;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background-color: rgba(255, 255, 255, 0.2); 
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <img src="https://i.ibb.co/DHp5K25V/20250424004109.jpg" alt="My Profile Picture" class="profile-img">
+            <h1>Ronnie Cai</h1>
+            <p>Undergraduate Computer Science Student | University of Macau</p>
+        </header>
+
+        <section class="card">
+            <h2>About Me</h2>
+            <p>Hello! I am a big fan of designing and developing video games. I love creating immersive experiences and bringing creative ideas to the gaming world through code.</p>
+        </section>
+
+        <section class="card">
+            <h2>Featured Projects</h2>
+            <div class="grid">
+                <a href="#" class="grid-item">
+                    <h3>Project One</h3>
+                    <p>Project description goes here.</p>
+                </a>
+                <a href="#" class="grid-item">
+                    <h3>Project Two</h3>
+                    <p>Project description goes here.</p>
+                </a>
+                <a href="#" class="grid-item">
+                    <h3>Project Three</h3>
+                    <p>Project description goes here.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Connect & Find Me</h2>
+            <div class="grid">
+                <a href="https://github.com/Ronnie-Cai" target="_blank" rel="noopener noreferrer" class="grid-item link-subcard">
+                    <div class="link-header">
+                        <h3>GitHub</h3>
+                        <span class="link-icon">↗</span>
+                    </div>
+                    <p>Explore my open-source projects, repositories, and code contributions.</p>
+                </a>
+
+                <a href="#" class="grid-item link-subcard">
+                    <div class="link-header">
+                        <h3>LinkedIn</h3>
+                        <span class="link-icon">↗</span>
+                    </div>
+                    <p>Connect with me professionally and view my academic milestone details.</p>
+                </a>
+
+                <a href="#" class="grid-item link-subcard">
+                    <div class="link-header">
+                        <h3>Portfolio / Blog</h3>
+                        <span class="link-icon">↗</span>
+                    </div>
+                    <p>Read my latest technical write-ups and deep-dives into computer science.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="card" style="text-align: center;">
+            <h2>Get In Touch</h2>
+            <p style="color: #ffffff; margin-bottom: 1rem;">If u have any questions or would like to collaborate, please contact me!</p>
+            <a href="mailto:caironnie@hotmail.com" class="cta-btn">Say Hello</a>
+        </section>
+
+        <footer>
+            <p style="color: #ffffff;">&copy; 2026 Ronnie Cai. Built from scratch.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
