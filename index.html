@@ -141,6 +141,15 @@
             color: #ffffff; /* Soft gray for description text */
         }
 
+        .project-img {
+            width: 100%;                  /* 宽度自适应卡片 */
+            height: 160px;                /* 固定一个好看的高度 */
+            object-fit: cover;            /* 裁剪核心：图片不拉伸、不变形 */
+            border-radius: 6px 6px 0 0;   /* 让图片的上方两个角带一点圆角，贴合卡片边框 */
+            margin-bottom: 0.75rem;       /* 与下方标题保持一点间距 */
+            display: block;
+        }
+
         /* Contact Button */
         .cta-btn {
             display: inline-block;
